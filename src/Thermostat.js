@@ -11,3 +11,7 @@ Thermostat.prototype.defaultTemp = function(){
 Thermostat.prototype.increaseTemp = function(degrees){
   return this._temp += degrees;
 };
+
+Thermostat.prototype.decreaseTemp = function(degrees){
+  return this._temp -= degrees;
+};

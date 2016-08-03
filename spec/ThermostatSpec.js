@@ -11,6 +11,9 @@ describe('A thermostat', function() {
   it('increases the temperature', function(){
     expect(thermostat.increaseTemp(5)).toEqual(25);
   });
+  it('decreases the temperature', function(){
+    expect(thermostat.decreaseTemp(5)).toEqual(15);
+  });
 
 });
 
