@@ -75,14 +75,20 @@ describe('A thermostat', function() {
       }
       expect(thermostat.energyUsage()).toEqual('low-usage')
     });
-    
-    // it('below 25', function() {
-    
-    // });
 
-    // it('above 25', function() {
-    
-    // });
+    it('below 25 is considered medium-usage', function() {
+     for (var i = 0; i < 5; i++ ) {
+       thermostat.up();
+     }
+     expect(thermostat.energyUsage()).toEqual('medium-usage')
+   });
+   it('above 25 is considered high-usage', function() {
+     thermostat.powerSavingMode = false;
+     for (var i = 0; i < 10; i++ ) {
+       thermostat.up();
+     }
+     expect(thermostat.energyUsage()).toEqual('high-usage')
+    });
   });
 
 });
