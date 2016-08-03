@@ -20,6 +20,9 @@ describe('A thermostat', function() {
   });
 
   it('min temperature is 10 degress', function() {
+     for (var i = 0; i < 11; i++){
+       thermostat.down();
+      };
     expect(thermostat.getCurrentTemperature()).not.toBeLessThan(10);
   });
 
