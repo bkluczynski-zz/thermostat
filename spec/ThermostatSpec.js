@@ -6,13 +6,21 @@ describe('A thermostat', function() {
   });
 
   it('starts at 20 degrees', function() {
-    expect(thermostat.defaultTemp()).toEqual(20);
+    expect(thermostat.getCurrentTemperature()).toEqual(20);
   });
+
   it('increases the temperature', function(){
-    expect(thermostat.increaseTemp(5)).toEqual(25);
+    thermostat.up();
+    expect(thermostat.getCurrentTemperature()).toEqual(21);
   });
+
   it('decreases the temperature', function(){
-    expect(thermostat.decreaseTemp(5)).toEqual(15);
+    thermostat.down();
+    expect(thermostat.getCurrentTemperature()).toEqual(19);
+  });
+
+  it('min temperature is 10 degress', function() {
+    expect(thermostat.getCurrentTemperature()).not.toBeLessThan(10);
   });
 
 });
