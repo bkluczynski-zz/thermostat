@@ -58,8 +58,31 @@ describe('A thermostat', function() {
     });
   });
 
+  describe('reset button', function() {
+    it('reset temperature to 20 degree', function() {
+      for (var i = 0; i < 13; i++) {
+        thermostat.up();
+      }
+      thermostat.resetTemperature();
+      expect(thermostat.getCurrentTemperature()).toEqual(20);
+    });
+  });
 
+  describe('colour display base on energy use', function() {
+    it('below 18 is considered low-usage', function() {
+      for (var i = 0; i < 3; i++) {
+        thermostat.down();
+      }
+      expect(thermostat.energyUsage()).toEqual('low-usage')
+    });
+    
+    // it('below 25', function() {
+    
+    // });
 
-
+    // it('above 25', function() {
+    
+    // });
+  });
 
 });
