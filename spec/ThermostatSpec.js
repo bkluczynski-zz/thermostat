@@ -16,19 +16,20 @@ describe('A thermostat', function() {
 
   it('decreases the temperature', function(){
     thermostat.down();
-    expect(thermostat.getCurrentTemperature()).toEqual(19);
+    expect(thermostat.getCurrentTemperature()).toEqual(19); 
   });
 
   it('min temperature is 10 degress', function() {
-     for (var i = 0; i < 11; i++){
-       thermostat.down();
-      };
+    for (var i = 0; i < 11; i++) {
+      thermostat.down();
+    };
     expect(thermostat.getCurrentTemperature()).not.toBeLessThan(10);
+  });
+
+  it('max temperature is 25 degrees, when power saving mode is on', function() {
+    thermostat.isPowerSavingModeOn();
+    expect(thermostat.getCurrentTemperature()).toBeLessThan(25);
   });
 
 });
 
-
-
-
-// You can increase the temperature with the up button
