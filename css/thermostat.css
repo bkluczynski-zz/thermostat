@@ -32,14 +32,22 @@ body {
 
 .header {
 color: white;
+
 }
 
+.bigger {
+color: white;
+font-size: 100px
+
+}
+/*
 .container {
     height: 300px;
     width: 300px;
-    margin: 150px auto;
-  
-  }
+    margin: 150px 150px;
+
+
+  }*/
 
 h1 {
 
