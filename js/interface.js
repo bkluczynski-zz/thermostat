@@ -2,6 +2,19 @@ $(document).ready(function() {
   var thermostat = new Thermostat();
   updateTemperature();
 
+  $.get('http://api.openweathermap.org/data/2.5/weather?q=Tokyo&appid=3500f4d310301a1bef092796fd72bc20&units=metric', function(data) {
+  $('#current-weather').text(data.main.temp);
+  })
+
+  $('#select-city').submit(function(event) {
+    event.preventDefault();
+    var city = $('#current-city').val();
+    $.get('http://api.openweathermap.org/data/2.5/weather?q= '+ city +'&appid=3500f4d310301a1bef092796fd72bc20&units=metric', function(data) {
+      $('#current-weather').text(data.main.temp);
+    })
+
+  })
+
   $('#temperature-up').on('click', function(){
     thermostat.up();
     updateTemperature();
