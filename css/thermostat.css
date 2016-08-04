@@ -1,11 +1,53 @@
 .low-usage {
   color: green;
+  font-size: 100px;
 }
 
 .medium-usage {
-  color: black;
+  color: white;
+  font-size: 100px;
+
 }
 
 .high-usage {
   color: red;
+  font-size: 100px;
+
+}
+
+body {
+  background: url(background.jpeg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-image:
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(background.jpeg);
+
+}
+
+.header {
+color: white;
+}
+
+.container {
+    height: 300px;
+    width: 300px;
+    margin: 150px auto;
+  
+  }
+
+h1 {
+
+font-size: 50px;
+
+}
+
+
+#current-weather {
+font-size: 100px;
 }
