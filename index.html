@@ -14,6 +14,11 @@
   <body>
       <div class='container'>
       <section>
+        <span class='header'><h1 class='header'>Power saving mode is: </span><span id="power-saving-status" class='bigger'>on</h1></span>
+        <button class="button-large pure-button" id="powersaving-on">PSM on</button>
+        <button class="button-large pure-button" id="powersaving-off" class='header'>PSM off</button>
+    </section>
+    <section>
     <h1 class='header'>Outside:
       <span id="current-weather">20</span></h1>
     <form id="select-city">
@@ -21,18 +26,15 @@
       <input type="submit"></input>
     </form>
   </section>
-      <section>
-          <h1 class='header'>Inside:
-            <span class ='header' id="temperature"> </span></h1>
-        <p>
-          <button class="button-large pure-button" id="temperature-up">+</button>
-          <button class="button-large pure-button" id="temperature-down">-</button>
-          <button class="button-large pure-button" id="temperature-rest">reset</button>
-          <span class='header'><h1 class='header'>Power saving mode is: </span><span id="power-saving-status" class='bigger'>on</h1></span>
-          <button class="button-large pure-button" id="powersaving-on">PSM on</button>
-          <button class="button-large pure-button" id="powersaving-off" class='header'>PSM off</button>
-        </p>
-      </section>
+    <section>
+        <h1 class='header'>Inside:
+          <span class ='header' id="temperature"> </span></h1>
+      <p>
+        <button class="button-large pure-button" id="temperature-up">+</button>
+        <button class="button-large pure-button" id="temperature-down">-</button>
+        <button class="button-large pure-button" id="temperature-rest">reset</button>
+      </p>
+    </section>
   </div>
   </body>
 
