@@ -1,19 +1,17 @@
 $(document).ready(function() {
   var thermostat = new Thermostat();
-  updateTemperature();
-
-  $.get('http://api.openweathermap.org/data/2.5/weather?q=Tokyo&appid=3500f4d310301a1bef092796fd72bc20&units=metric', function(data) {
-  $('#current-weather').text(data.main.temp);
-  })
-
-  $('#select-city').submit(function(event) {
-    event.preventDefault();
-    var city = $('#current-city').val();
-    $.get('http://api.openweathermap.org/data/2.5/weather?q= '+ city +'&appid=3500f4d310301a1bef092796fd72bc20&units=metric', function(data) {
-      $('#current-weather').text(data.main.temp);
+    $.getJSON('http://localhost:4567/temperature',function(data){
+      thermostat.temperature = data.temp;
+      if (data.psm == 'true') {
+        thermostat.switchPowerSavingModeOn();
+      }else{
+        thermostat.switchPowerSavingModeOff();
+      }
+      $('#current-city').val(data.city);
+      displayWeather(data.city);
+      updateTemperature();
+      updatePowerMode();
     })
-
-  })
 
   $('#temperature-up').on('click', function(){
     thermostat.up();
@@ -54,10 +52,21 @@ $(document).ready(function() {
 
   }
 
+  $('#select-city').submit(function(event) {
+    event.preventDefault();
+    var city = $('#current-city').val();
+    var requestData = {
+      city: city,
+    };
+    $.post('http://localhost:4567/temperature', requestData, function(){});
+    displayWeather(city);
+  })
+
 
   function updateTemperature() {
     $('#temperature').text(thermostat.temperature);
     $('#temperature').attr('class', thermostat.energyUsage());
+    $.post('http://localhost:4567/temperature',{ temp: thermostat.temperature, psm:thermostat.isPowerSavingModeOn(),function(){});
   }
 
   function updatePowerMode() {
