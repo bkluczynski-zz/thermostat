@@ -38,15 +38,39 @@ $(document).ready(function() {
 
   $('#powersaving-off').on('click', function(){
     thermostat.switchPowerSavingModeOff();
-    $("#power-saving-status").text('off')
+    updatePowerMode();
     updateTemperature();
   });
 
 
-  function updateTemperature() {
-    $('#temperature').text(thermostat._temperature);
-    $('#temperature').attr('class', thermostat.energyUsage());
+
+  function displayWeather(city){
+    var url = 'http://api.openweathermap.org/data/2.5/weather?q=' + city;
+    var token = '&appid=3500f4d310301a1bef092796fd72bc20';
+    var units = '&units=metric';
+    $.get(url + token + units, function(data){
+      $('#current-weather').text(data.main.temp);
+    });
+
   }
 
 
-})
+  function updateTemperature() {
+    $('#temperature').text(thermostat.temperature);
+    $('#temperature').attr('class', thermostat.energyUsage());
+  }
+
+  function updatePowerMode() {
+    if (thermostat.isPowerSavingModeOn()) {
+      $('#power-saving-status').text('on');
+    }else {
+      $('#power-saving-status').text('off')
+    }
+  }
+
+
+
+
+
+
+});
